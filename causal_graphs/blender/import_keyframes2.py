@@ -1,6 +1,7 @@
 import pickle
 
 import bpy
+import sys
 from bpy_extras.io_utils import ImportHelper
 
 
@@ -85,5 +86,8 @@ def import_states(path):
 
 if __name__ == "__main__":
     register()
-    bpy.ops.custom.states_importer('INVOKE_DEFAULT')
+    # bpy.ops.custom.states_importer('INVOKE_DEFAULT')
+    path = "/Users/scyasuda/Desktop/physical_event_primitives/causal_graphs/demos/" + sys.argv[sys.argv.index("--") + 1] + ".pkl"
+    import_states(path)
+    #bpy.ops.wm.save_as_mainfile(filepath=fallingBall_success.blend)
 

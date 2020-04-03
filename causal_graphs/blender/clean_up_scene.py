@@ -24,8 +24,8 @@ def main():
     
     obj_camera = bpy.context.scene.camera
     
-    obj_camera.location[0] = -0.02
-    obj_camera.location[1] = 1.79
+    obj_camera.location[0] = 0.17
+    obj_camera.location[1] = 1.46
     obj_camera.location[2] = 0.28
     
     obj_camera.rotation_euler[0] = 1.5708

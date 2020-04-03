@@ -14,8 +14,8 @@ import sys
 cycles_prefs = bpy.context.preferences.addons['cycles'].preferences
 #cycles_prefs.compute_device_type = 'CUDA'
 print("Devices: {}".format(list(cycles_prefs.devices)))
-guid = int(sys.argv[-1])
-print("Using GPU {}".format(guid))
+# guid = int(sys.argv[-1])
+# print("Using GPU {}".format(guid))
 #for i in range(4):
 #    cycles_prefs.devices[i].use = (i == guid)
 scene = bpy.data.scenes['Scene']

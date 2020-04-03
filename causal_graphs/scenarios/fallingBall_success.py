@@ -3,7 +3,7 @@ from math import atan, degrees
 import random
 
 # BALL_RADIUS = 0.0105  # [m]
-BALL_RADIUS = 0.008  # [m]
+BALL_RADIUS = 0.02  # [m]
 # BALL_MASS = 0.013  # [kg]
 BALL_MASS = 0.0056  # [kg]
 BALL_RESTITUTION = 0.8
@@ -70,7 +70,7 @@ DATA = {
                 'extents': TOP_TRACK_LWHT,
             },
             'xform': {
-                'value': [-.1, TOP_TRACK_LWHT[1]/2+.1+(random.uniform(-.05,.05)), .3, 0, 0, 20+(random.uniform(-20,10))],
+                'value': [-.1, TOP_TRACK_LWHT[1]/2+.1+(random.uniform(-.05,.05)), .4, 0, 0, 20+(random.uniform(-20,10))],
                 'range': [
                     [-BASE_PLANK_LWH[0]/3, 0],
                     None,
