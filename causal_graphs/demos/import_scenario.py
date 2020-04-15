@@ -34,7 +34,7 @@ def main():
     else:
         interactive = False
 
-    print(interactive)
+    # print(interactive)
     scenario_data = import_scenario_data(path)
     scene_data = scenario_data['scene']
     load_prc_file_data("", "win-origin 500 200")

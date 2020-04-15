@@ -133,7 +133,7 @@ class RollingOn:
 
     def __call__(self):
         contact = self.world.contact_test_pair(
-            self.rolling.nodes(), self.support.nodes()
+            self.rolling.node(), self.support.node()
         ).get_num_contacts()
         if contact:
             angvel_sq = self.rolling.node().get_angular_velocity(

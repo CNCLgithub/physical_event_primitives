@@ -762,147 +762,15 @@ DATA = {
             }
         },
     ],
-    'causal_graph': [
-        {
-            'name': "domrun_lever_pivots",
-            'type': "Pivoting",
-            'args': {
-                'body': "initial_run_lever_plank",
-                'min_angvel': PIVOTING_ANGULAR_VELOCITY,
-            },
-            'children': [
-                "first_domino_falls_on_second",
-            ]
-        },
-        {
-            'name': "first_domino_falls_on_second",
-            'type': "Contact",
-            'args': {
-                'first': "initial_run_dom_0",
-                'second': "initial_run_dom_1"
-            },
-            'children': [
-                "last_domino_hits_ball",
-            ]
-        },
-        {
-            'name': "last_domino_hits_ball",
-            'type': "Contact",
-            'args': {
-                'first': "initial_run_dom_2",
-                'second': "ball1"
-            },
-            'children': [
-                "ball_rolls_on_track",
-            ]
-        },
-        {
-            'name': "ball_rolls_on_track",
-            'type': "RollingOn",
-            'args': {
-                'rolling': "ball1",
-                'support': "ball1_track",
-                'min_angvel': ANGVEL
-            },
-            'children': [
-                "ball_hits_bouncer",
-            ]
-        },
-        {
-            'name': "ball_hits_bouncer",
-            'type': "Contact",
-            'args': {
-                'first': "ball1",
-                'second': "ball1_bouncer"
-            },
-            'children': [
-                "ball_hits_top_lever",
-            ]
-        },
-        {
-            'name': "ball_hits_top_lever",
-            'type': "Contact",
-            'args': {
-                'first': "ball1",
-                'second': "lever1"
-            },
-            'children': [
-                "plank_topples",
-            ]
-        },
-        {
-            'name': "plank_topples",
-            'type': "Toppling",
-            'args': {
-                'body': "falling_plank",
-                'angle': PLANK_TOPPLING_ANGLE
-            },
-            'children': [
-                "plank_enters_goblet",
-            ]
-        },
-        {
-            'name': "plank_enters_goblet",
-            'type': "Inclusion",
-            'args': {
-                'inside': "falling_plank",
-                'outside': "lever3_goblet",
-            },
-            'children': [
-                "bottom_lever_pivots",
-            ]
-        },
-        {
-            'name': "bottom_lever_pivots",
-            'type': "Pivoting",
-            'args': {
-                'body': "lever3_goblet",
-                'min_angvel': PIVOTING_ANGULAR_VELOCITY,
-            },
-            'children': [
-                "bottom_mass_falls",
-            ]
-        },
-        {
-            'name': "bottom_mass_falls",
-            'type': "Falling",
-            'args': {
-                'body': "lever4_weight",
-                'min_linvel': FALLING_LINEAR_VELOCITY,
-            },
-            'children': [
-                "coin_lever_pivots",
-            ]
-        },
-        {
-            'name': "coin_lever_pivots",
-            'type': "Pivoting",
-            'args': {
-                'body': "coin_goblet_lever_plank",
-                'min_angvel': PIVOTING_ANGULAR_VELOCITY,
-            },
-            'children': [
-                "coin_falls",
-            ]
-        },
-        {
-            'name': "coin_falls",
-            'type': "Falling",
-            'args': {
-                'body': "coin3",
-                'min_linvel': FALLING_LINEAR_VELOCITY,
-            },
-            'children': [
-                "coin_enters_box",
-            ]
-        },
-        {
-            'name': "coin_enters_box",
-            'type': "Inclusion",
-            'args': {
-                'inside': "coin4",
-                'outside': "box",
-            },
-        },
-    ]
+    # 'causal_graph': [
+    #     {
+    #         'name': "ball_rolls_on_track",
+    #         'type': "RollingOn",
+    #         'args': {
+    #             'rolling': "ball1",
+    #             'support': "ball1_track",
+    #             'min_angvel': ANGVEL
+    #         }
+    #     }
+    # ]
 }

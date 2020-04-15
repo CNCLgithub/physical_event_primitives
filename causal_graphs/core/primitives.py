@@ -249,12 +249,15 @@ class Ball(PrimitiveBase):
       Name of the ball.
     radius : float
       Radius of the ball.
+    velocity : float
+      Initial velocity of the ball.
 
     """
 
-    def __init__(self, name, radius, **bt_props):
+    def __init__(self, name, radius, force, **bt_props):
         super().__init__(name=name, **bt_props)
         self.radius = radius
+        self.force = force
 
     def create(self, geom, phys, parent=None, world=None):
         name = self.name + "_solid"
@@ -264,8 +267,21 @@ class Ball(PrimitiveBase):
             self._set_properties(body)
             shape = bt.BulletSphereShape(self.radius)
             body.add_shape(shape)
+            body.applyCentralForce(self.force)
             bodies = [body]
             path = NodePath(body)
+
+            # thruster=NodePath("thruster") # make a thruster for the jetpack
+            # thruster.reparentTo(body)
+            # thruster.setPos(0,0,0)
+
+            # thrusterFN=ForceNode('body-thruster') # Attach a thruster force
+            # thrusterFNP=thruster.attachNewNode(thrusterFN)
+            # thrusterForce=LinearVectorForce(0,1,0)
+            # thrusterForce.setMassDependent(1)
+            # thrusterFN.addForce(thrusterForce)
+
+            # body.getPhysical(0).addLinearForce(thrusterForce)
         else:
             bodies = []
             path = NodePath(name)
@@ -301,9 +317,10 @@ class Box(PrimitiveBase):
 
     """
 
-    def __init__(self, name, extents, **bt_props):
+    def __init__(self, name, extents, force, **bt_props):
         super().__init__(name=name, **bt_props)
         self.extents = extents
+        self.force = force
 
     def create(self, geom, phys, parent=None, world=None):
         name = self.name + "_solid"
@@ -314,6 +331,7 @@ class Box(PrimitiveBase):
             shape = bt.BulletBoxShape(Vec3(*self.extents) / 2)
             #  shape.set_margin(.0001)
             body.add_shape(shape)
+            body.applyCentralForce(self.force)
             bodies = [body]
             path = NodePath(body)
         else:
