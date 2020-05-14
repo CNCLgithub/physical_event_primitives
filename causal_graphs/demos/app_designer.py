@@ -29,14 +29,16 @@ DEFAULT_PRIMITIVE_ARGS = {
     'Ball': {
         '_name': "ball",
         'radius': .05,
-        'mass': .1
+        'mass': .1,
+        'force': (0,0,0)
     },
     'Box': {
         '_name': "box",
         'length': .1,
         'width': .1,
         'height': .1,
-        'mass': .1
+        'mass': .1,
+        'force': (0,0,0)
     },
     'Track': {
         '_name': "track",

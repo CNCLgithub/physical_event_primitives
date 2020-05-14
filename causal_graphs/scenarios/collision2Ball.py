@@ -54,12 +54,12 @@ DATA = {
             'type': "Ball",
             'args': {
                 'radius': BALL_RADIUS,
-                'force': (random.uniform(2,5),0,0),
+                'force': (random.uniform(5,5),0,0),
                 'b_mass': BALL_MASS,
                 'b_restitution': BALL_RESTITUTION
             },
             'xform': {
-                'value': [-TOP_TRACK_LWHT[0]/2, BALL_RADIUS*2, BALL_RADIUS,
+                'value': [-TOP_TRACK_LWHT[0]/2-.7, BALL_RADIUS*2, BALL_RADIUS,
                           0, 0, 0]
             }
         },

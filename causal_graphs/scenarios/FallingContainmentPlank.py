@@ -40,10 +40,19 @@ DATA = {
             }
         },
         {
-            'name': "ball",
+            'name': "board2",
+            'type': "Plane",
+            'args': {
+                'normal': [0, 0, 1],
+                'distance': 0
+            },
+        },
+        {
+            'name': "plank",
             'type': "Box",
             'args': {
                 'extents': HIGH_PLANK_LWH,
+                'force': (0,0,0),
                 'b_mass': BALL_MASS,
                 'b_restitution': BALL_RESTITUTION
             },
@@ -56,7 +65,8 @@ DATA = {
             'name': "base_plank",
             'type': "Box",
             'args': {
-                'extents': BASE_PLANK_LWH
+                'extents': BASE_PLANK_LWH,
+                'force': (0,0,0)
             },
             'xform': {
                 'value': [
