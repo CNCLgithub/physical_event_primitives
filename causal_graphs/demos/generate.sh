@@ -2,9 +2,10 @@
 
 # scene="../scenarios/fallingBall_success.py"
 
-blender_path="/Applications/Blender.app/Contents/MacOS/Blender"
+#blender_path="/Applications/Blender.app/Contents/MacOS/Blender"
+blender_path=/blender/blender
 
-path="../scenarios/"
+path="scenarios/"
 
 echo 'Which Scene?'
 
@@ -36,7 +37,7 @@ read debug
 # read movable
 
 #creates simu.pkl and scene.egg files
-printf './'$scene | python3.7 import_scenario.py $path$scene".py"
+printf './'$scene | python demos/import_scenario.py $path$scene".py"
 
 blendfile=$scene".blend"
 
@@ -44,9 +45,9 @@ touch $blendfile
 
 if [ $debug == "0" ]
 then
-	printf $scene".egg" | $blender_path -b --python import.py --python ../blender/clean_up_scene.py --python ../blender/import_keyframes2.py --python ../blender/render.py -- $scene
+	printf $scene".egg" | $blender_path -b --python demos/import.py --python blender/clean_up_scene.py --python blender/import_keyframes2.py --python blender/render.py -- $scene
 else
-	printf $scene".egg" | $blender_path --python import.py --python ../blender/clean_up_scene.py --python ../blender/import_keyframes2.py -- $scene
+	printf $scene".egg" | $blender_path --python demos/import.py --python blender/clean_up_scene.py --python blender/import_keyframes2.py -- $scene
 fi
 
 
