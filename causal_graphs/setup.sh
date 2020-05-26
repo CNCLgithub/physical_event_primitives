@@ -15,7 +15,7 @@ julia=${3:-"false"}
 # conda setup
 [ -z "$conda" ] || [ "$conda" = "false" ] && echo "Not touching conda"
 [ "$conda" = "build" ] || [ "$conda" = "true" ] && echo "building conda env" && \
-    singularity exec ${ENV[cont]} bash -c "yes | conda create -p $PWD/${ENV[env]} python=3.6" && \
+    singularity exec ${ENV[cont]} conda create -p $PWD/${ENV[env]} python=3.6 && \
     ./run.sh python -m pip install -r requirements.txt
 
 # julia setup
