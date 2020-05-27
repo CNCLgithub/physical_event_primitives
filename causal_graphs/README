@@ -1,25 +1,15 @@
+***Disclaimer: Much of this code is taken directly from http://geometry.cs.ucl.ac.uk/projects/2019/causal-graphs/ with tweaks to fit our specific situation***
+
 Contents
 --------
 blender/                   Scripts used to export animations to Blender
 core/                      Core package; contains all the algorithms
-demos/                     Demos to play with
-gui/                       Graphical modules
-scenarios/                 Config files of the scenarios presented in the paper
+demos/                     Demos to play with & contains the main generate.sh script for generating videos
+gui/                       Graphical modules -- mostly irrelevant here
+scenarios/                 Config files of different possible scenarios
 
-Installation
-------------
-sudo apt install openscad libgeos-dev libcairo2-dev libffi-dev python3-tk
-pip3 install -r requirements.txt
 
 Usage
 -----
-cd demos/
-python3 app_designer.py
-python3 create_random_instance ../scenarios/ballrun.py
-python3 import_scenario.py ../scenarios/ballrun.py 1
-python3 optimize_robustness.py ../scenarios/ballrun.py
-python3 plot_local_robustness.py ../scenarios/ballrun.py 10000 4
-
-NB: some parameters must be specified directly in the scripts.
-
 You can run the script using or according to the commands found in demos/generate.sh
+e.g., ./run.sh demos/generate.sh
