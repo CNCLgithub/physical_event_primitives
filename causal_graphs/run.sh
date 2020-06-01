@@ -29,6 +29,7 @@ ${SING} ${BS} ${CONT} bash -c "source activate $PWD/${ENV[env]} \
         && export JULIA_DEPOT_PATH=${ENV[julia_depot]} \
         && export JULIA_PROJECT=${PWD} \
         && export PYCALL_JL_RUNTIME_PYTHON=$PWD/${ENV[env]}/bin/python3 \
+        && export XDG_CONFIG_HOME=$PWD/${ENV[blender_config]} \
         && cd ${PWD} \
         && exec $COMMAND \
         && source deactivate"
