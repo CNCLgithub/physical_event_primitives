@@ -5,7 +5,7 @@ bpy.ops.object.delete(use_global=False)
 
 
 #directory = "/Users/scyasuda/Desktop/physical_event_primitives/causal_graphs/demos/"
-directory = "demos/"
+directory = "./"
 
 file = input()
 

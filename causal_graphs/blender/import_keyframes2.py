@@ -88,7 +88,7 @@ def import_states(path):
 if __name__ == "__main__":
     register()
     # bpy.ops.custom.states_importer('INVOKE_DEFAULT')
-    path = "demos/" + sys.argv[sys.argv.index("--") + 1] + ".pkl"
+    path = "./" + sys.argv[sys.argv.index("--") + 1] + ".pkl"
     import_states(path)
     #bpy.ops.wm.save_as_mainfile(filepath=fallingBall_success.blend)
 
