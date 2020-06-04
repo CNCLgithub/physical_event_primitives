@@ -17,6 +17,7 @@ def clean_up(objects):
 
 
 def main():
+    print('blender clean_up')
     bpy.ops.object.select_all(action='SELECT')
     init = context.active_object
     clean_up(context.selected_objects)

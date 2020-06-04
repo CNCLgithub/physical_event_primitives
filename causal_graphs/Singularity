@@ -44,7 +44,7 @@ from: ubuntu:18.04
  chmod +x blender/blender
     
  # blender egg addon
- git clone "https://github.com/rdb/blender-egg-importer.git" /blender/2.82/scripts/addons/blender-egg-importer
+ #git clone "https://github.com/CNCLgithub/blender-egg-importer.git" /blender/2.82/scripts/addons/blender-egg-importer
 
  # Setup conda
  wget "https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh" -O conda.sh

@@ -333,14 +333,17 @@ class StateObserver:
         with open(filename, 'wb') as f:
             pickle.dump(data, f)
 
-
-def import_scenario_data(path):
-    if path.endswith("json"):
+# adapted for our purposes
+# takes the py_scenario_path (e.g. 'scenarios/occlusion_Gen.py')
+# and also the Gen JSON path to return scenario data based on
+# Gen random choices
+def import_scenario_data(py_scenario_path, gen_json_path):
+    if py_scenario_path.endswith("json"):
         with open(path, 'r') as f:
             scenario_data = json.load(f)
-    elif path.endswith("py"):
-        script = load_module("loaded_script", path)
-        scenario_data = script.DATA
+    elif py_scenario_path.endswith("py"):
+        script = load_module("loaded_script", py_scenario_path)
+        scenario_data = script.get_scene_data(gen_json_path)
     else:
         print("Unrecognized extension")
         scenario_data = None

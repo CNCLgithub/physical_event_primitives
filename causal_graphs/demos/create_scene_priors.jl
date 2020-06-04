@@ -14,6 +14,7 @@ using JSON
 # Get the arguments
 scene_type=ARGS[1]
 trace_number=ARGS[2]
+gen_json_path=ARGS[3]
 #println(scene_type)
 #println(trace_number)
 
@@ -103,7 +104,7 @@ if scene_type=="occlusion_Gen"
     trace = Gen.simulate(generate_occlusion_scene, (0,));
 end
 
-println(string("Wrote gen trace to gen_jsons/scene_trace_",scene_type,trace_number,".json"))
-
 # Write 
-write_gen_trace(trace,scene_type,string("gen_jsons/scene_trace_",scene_type,trace_number,".json"))
+write_gen_trace(trace, scene_type, gen_json_path)
+print("wrote Gen trace to $gen_json_path")
+

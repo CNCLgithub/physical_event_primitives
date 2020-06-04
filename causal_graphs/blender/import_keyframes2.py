@@ -1,4 +1,5 @@
 import pickle
+import os
 
 import bpy
 import sys
@@ -86,9 +87,24 @@ def import_states(path):
 
 
 if __name__ == "__main__":
+    # getting arguments after "--"
+    import sys
+    argv = sys.argv
+    try:
+        index = argv.index("--") + 1
+    except ValueError:
+        index = len(argv)
+    argv = argv[index:]
+        
+    scenario_dir = argv[0]
+    trace = argv[1]
+
     register()
     # bpy.ops.custom.states_importer('INVOKE_DEFAULT')
-    path = "./" + sys.argv[sys.argv.index("--") + 1] + ".pkl"
-    import_states(path)
+    fname = '{trace}.pkl'.format(trace=trace)
+    filepath = os.path.join(scenario_dir, fname)
+
+    #path = "./" + sys.argv[sys.argv.index("--") + 1] + ".pkl"
+    import_states(filepath)
     #bpy.ops.wm.save_as_mainfile(filepath=fallingBall_success.blend)
 

@@ -1,0 +1,3 @@
+[submodule "causal_graphs/blender/addons/blender-egg-importer"]
+	path = causal_graphs/blender/addons/blender-egg-importer
+	url = https://github.com/CNCLgithub/blender-egg-importer
