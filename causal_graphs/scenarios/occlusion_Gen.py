@@ -6,19 +6,48 @@ import sys
 import os
 import json
 
-# Which scene trace are you loading in? (Currently doesn't work because need to edit the import_scenario function located in core/scenario.py and how this function is called in demos/import_scenario.py ...)
-# which_trace=sys.argv[1]
-
-
 def get_scene_data(gen_json_path):
-    # Load in the file that contains the generated items (should be based on a seed input but just default now)
-    #with open('gen_jsons/scene_trace_occlusion_Gen2.json') as f:
-    #    trace = json.load(f)
-
-    with open(gen_json_path) as f:
-        trace = json.load(f)
     
+    # Load or make the random decisions
+    
+    if os.path.exists(gen_json_path):
+        
+        # Load in the file that contains the generated items
+        with open(gen_json_path) as f:
+            trace = json.load(f)
+    else:
+        
+        # Make the random decisions in python
+        if random.random() < .5:
+
+            # Make the trace for a ball
+            trace = {"is_ball": True,
+                    "ball_radius": random.uniform(0.005,.3),
+                    "force": random.uniform(8,13),
+                    "occluder_lwh": {"length": random.uniform(0.1,0.4), 
+                                           "width": random.uniform(0.0005,0.0001), 
+                                           "height": random.uniform(0.1,0.6)},
+                    "occluder_pos": random.uniform(0,.3)}
+
+        else:
+            trace = {"is_ball": False,
+                    "plank_lwh": {"length": random.uniform(0.01,0.03), 
+                                           "width": random.uniform(0.01,0.03), 
+                                           "height": random.uniform(0.01,0.03)},
+                    "force": random.uniform(0.01,0.04),
+                    "occluder_lwh": {"length": random.uniform(0.1,0.4), 
+                                           "width": random.uniform(0.0005,0.0001), 
+                                           "height": random.uniform(0.1,0.6)},
+                    "occluder_pos": random.uniform(0,.3)}     
+        # Save
+        with open(gen_json_path, 'w') as fp:
+            json.dump(trace, fp)
+
+            
+    # Tell us about it! 
     print(trace)
+    
+    ## Now create the scene
     DENSITY = 1
 
     if trace["is_ball"]:

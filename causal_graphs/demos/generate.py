@@ -50,14 +50,15 @@ def main():
     gen_json_path = os.path.join(scenario_dir, '{trace}.gen.json'.format(trace=args.trace))
     if not os.path.isfile(gen_json_path):
         print('Creating a random instance of: {scene}'.format(scene=args.scene))
-        cmd = ['julia', 'demos/create_scene_priors.jl', args.scene, str(args.trace), gen_json_path]
-        subprocess.run(cmd)
+        #cmd = ['julia', 'demos/create_scene_priors.jl', args.scene, str(args.trace), gen_json_path]
+        #subprocess.run(cmd)
     else:
-        print('JSON file already created for this seed number. Skipping the Gen step.')
+        print('JSON file already created for this seed number. Skipping the gen step.')
 
     
     # step 2 : creates simu.pkl and scene.egg files
     py_scenario_path = os.path.join(args.scenarios, args.scene+'.py')
+    
     # notice that a function is loaded from demos/import_scenario.py
     # (new function based on main in that file)
     import_scenario(py_scenario_path, gen_json_path, args.debug, scenario_dir, args.trace)
