@@ -13,7 +13,6 @@ class StatesImporter(bpy.types.Operator, ImportHelper):
 
     def execute(self, context):
 #        path = self.properties.filepath
-        #path = "/Users/scyasuda/Desktop/causal_graphs/demos/fallingBall_success.pkl"
         path = "demos/fallingBall_success.pkl"
 #        self.report({'INFO'}, "Importing {}".format(path))
         import_states(path)
@@ -40,6 +39,7 @@ def import_states(path):
         data = pickle.load(f)
     fps = data['metadata']['fps']
     states = data['states']
+
     # Set keyframes
     scene = bpy.context.scene
     max_frame = 0
@@ -73,10 +73,12 @@ def import_states(path):
             o.rotation_quaternion = (w, i, j, k)
             o.keyframe_insert(data_path='location', frame=frame)
             o.keyframe_insert(data_path='rotation_quaternion', frame=frame)
+
         # Keep track of max frame.
         # Do it after the for loop because highest frame is always last!
         if frame > max_frame:
             max_frame = frame
+
     # Set time remapping
     render = scene.render
     new_fps = render.fps
@@ -104,7 +106,4 @@ if __name__ == "__main__":
     fname = '{trace}.pkl'.format(trace=trace)
     filepath = os.path.join(scenario_dir, fname)
 
-    #path = "./" + sys.argv[sys.argv.index("--") + 1] + ".pkl"
     import_states(filepath)
-    #bpy.ops.wm.save_as_mainfile(filepath=fallingBall_success.blend)
-

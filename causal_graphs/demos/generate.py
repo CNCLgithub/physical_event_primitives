@@ -24,6 +24,9 @@ def main():
     parser.add_argument('--debug', action='store_true',
                         help='enables debug, i.e. blender GUI (? I suppose haha)')
 
+    parser.add_argument('--particles', action='store_true',
+                        help='enables particle representation exporting')
+
     parser.add_argument('--blender', type=str, default = '/blender/blender',
                         help='specify blender path')
     parser.add_argument('--scenarios', type=str, default = 'scenarios/',
@@ -66,19 +69,21 @@ def main():
     blendfile = os.path.join(scenario_dir, '{trace}.blend'.format(trace=args.trace))
     Path(blendfile).touch()
     
-
     # step 3 : clean up the scene and render in blender
     eggfile = os.path.join(scenario_dir, '{trace}.egg'.format(trace=args.trace))
 
     if not args.debug:
-        cmd = [ args.blender, '-b',
+        cmd = [ args.blender, '--background',
                 '--python', 'demos/import.py',
                 '--python', 'blender/clean_up_scene.py',
-                '--python', 'blender/import_keyframes2.py',
-                '--python', 'blender/render.py',
-                '--',
-                scenario_dir,
-                str(args.trace)]
+                '--python', 'blender/import_keyframes2.py']
+
+        if args.particles:
+            cmd.extend(['--python', 'blender/export_particles.py'])
+        else:
+            cmd.extend(['--python', 'blender/render.py'])
+
+        cmd.extend(['--', scenario_dir, str(args.trace)])
 
         subprocess.run(cmd)
 
