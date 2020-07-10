@@ -35,7 +35,7 @@ Contents
 
 `core/` - Core package; contains all the algorithms
 
-`demos/` - Demos to play with & contains the main generate.sh script for generating videos
+`demos/` - Demos to play with & contains the main `generate.py` script for generating videos
 
 `gui/` - Graphical modules -- mostly irrelevant here
 
