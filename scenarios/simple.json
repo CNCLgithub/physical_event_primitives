@@ -1,0 +1,119 @@
+{
+    "scene": [
+        {
+            "name": "floor",
+            "type": "Plane",
+            "args": {
+                "normal": [0, 0, 1],
+                "distance": 0
+            }
+        },
+        {
+            "name": "ball",
+            "type": "Ball",
+            "args": {
+                "radius": 0.01,
+                "b_mass": 0.01,
+                "b_friction": 0.5,
+                "b_restitution": 0.2
+            },
+            "parent": "track",
+            "xform": {
+                "value": [-0.02, 0, 0.01, 0, 0, 0]
+            }
+        },
+        {
+            "name": "track",
+            "type": "Track",
+            "args": {
+                "extents": [0.1, 0.02, 0.003, 0.001],
+                "b_friction": 0.5
+            },
+            "xform": {
+                "value": [-0.1, 0, 0.1, 0, 0, 30],
+                "range": [
+                    [-0.15, 0],
+                    null,
+                    [0, 0.15],
+                    null,
+                    null,
+                    [15, 75]
+                ]
+            }
+        },
+        {
+            "name": "run",
+            "type": "DominoRun",
+            "args": {
+                "extents": [0.005, 0.02, 0.04],
+                "coords": [
+                    [0, 0, 0],
+                    [0.01, 0, 0],
+                    [0.02, 0, 0]
+                ],
+                "b_mass": 0.03,
+                "b_friction": 0.6,
+                "b_restitution": 0.8,
+                "b_angular_damping": 0.09
+            },
+            "xform": {
+                "value": [0, 0, 0, 0, 0, 0]
+            }
+        }
+    ],
+    "causal_graph": [
+        {
+            "name": "ball_rolls_on_track",
+            "type": "RollingOn",
+            "args": {
+                "rolling": "ball",
+                "support": "track"
+            },
+            "children": [
+                "ball_hits_first_dom"
+            ]
+        },
+        {
+            "name": "ball_hits_first_dom",
+            "type": "Contact",
+            "args": {
+                "first": "ball",
+                "second": "run_dom_0"
+            },
+            "children": [
+                "first_dom_topples"
+            ]
+        },
+        {
+            "name": "first_dom_topples",
+            "type": "Toppling",
+            "args": {
+                "body": "run_dom_0",
+                "angle": 15
+            },
+            "children": [
+                "last_dom_topples"
+            ]
+        },
+        {
+            "name": "last_dom_topples",
+            "type": "Toppling",
+            "args": {
+                "body": "run_dom_2",
+                "angle": 15
+            },
+            "children": [
+                "last_dom_stops"
+            ]
+        },
+        {
+            "name": "last_dom_stops",
+            "type": "Stopping",
+            "args": {
+                "body": "run_dom_2",
+                "max_linvel": 1e-2,
+                "max_angvel": 1
+            }
+        }
+    ]
+}

@@ -21,3 +21,20 @@ Run `./setup.sh pull true true` to pull the Singularity image from box, set up t
 **Interacting with the image**
 
 Run `./run.sh <command>` to execute commands with the image, e.g. to launch Julia REPL `./run.sh julia`.
+
+
+
+***Disclaimer: Much of this code is taken directly from http://geometry.cs.ucl.ac.uk/projects/2019/causal-graphs/ with tweaks to fit our specific situation***
+
+Contents
+--------
+blender/                   Scripts used to export animations to Blender
+core/                      Core package; contains all the algorithms
+demos/                     Demos to play with & contains the main generate.sh script for generating videos
+gui/                       Graphical modules -- mostly irrelevant here
+scenarios/                 Config files of different possible scenarios
+
+
+Usage
+-----
+You can run the script using `./run.sh demos/generate.py`
