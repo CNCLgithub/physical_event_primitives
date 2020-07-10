@@ -6,7 +6,8 @@
 CONT="${ENV['cont']}"
 
 # Parse the incoming command
-COMMAND="$@"
+# (xvfb-run starts a virtual display)
+COMMAND="xvfb-run -a $@"
 
 # Enter the container and run the command
 SING="${ENV['path']} exec --nv"
