@@ -18,6 +18,8 @@ Requirements: `singularity`
 2. Make sure to create the virtual machine inside of the `physical_event_primitives` directory, or in a directory that encloses it. 
 3. When you want to build or pull the singularity image, go into the directory with the Vagrantfile and run `vagrant ssh`. Then `cd` into the `physical_event_primitives` directory which is located within `/vagrant/`. You can now run the above commands as if you were working on a Linux!
 
+Mac users may also need to `cp default.conf user.conf` and change the Julia depot line to `julia_depot:/home/vagrant/.julia/`.
+
 ### Interacting with the image
 
 Run `./run.sh <command>` to execute commands with the image, e.g. to launch Julia REPL `./run.sh julia`.
