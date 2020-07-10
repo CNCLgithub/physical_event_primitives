@@ -8,7 +8,7 @@ Requirements: `singularity`
 ***If you are working on a Linux computer, download singularity and you should be good to go! :***
 
 1. `git clone` the repository
-2. `cd physical_even_primitives`
+2. `cd physical_event_primitives`
 3. `git submodule update --init` (initialized the Blender egg importer add-on)
 4. `./setup.sh pull true true` (pulls the container from Box.com, sets up Conda and Julia environments). Run `./setup.sh build true true` if you want to build the container for some reason.
 
