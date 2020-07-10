@@ -9,7 +9,7 @@ Requirements: `singularity`
 
 1. `git clone` the repository
 2. `cd physical_event_primitives`
-3. `git submodule update --init` (initialized the Blender egg importer add-on)
+3. `git submodule update --init` (initialize the Blender egg importer add-on)
 4. `./setup.sh pull true true` (pulls the container from Box.com, sets up Conda and Julia environments). Run `./setup.sh build true true` if you want to build the container for some reason.
 
 ***If you are working on a Mac, the situation is more complicated.***
