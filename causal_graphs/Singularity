@@ -26,6 +26,7 @@ from: ubuntu:18.04
  add-apt-repository ppa:openscad/releases
  apt-get update --fix-missing
  apt-get install -y openscad libgeos-dev libcairo2-dev libffi-dev python3-tk wget git
+ apt-get install -y xvfb
  apt-get clean
 
  # Install Julia
