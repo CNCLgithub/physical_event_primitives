@@ -31,11 +31,15 @@ If using Milgram and need a virtual display (e.g. rendering with Blender), run `
 
 Contents
 --------
-`blender/`                   Scripts used to export animations to Blender
-`core/`                      Core package; contains all the algorithms
-`demos/`                     Demos to play with & contains the main generate.sh script for generating videos
-`gui/`                       Graphical modules -- mostly irrelevant here
-`scenarios/`                 Config files of different possible scenarios
+`blender/` - Scripts used to export animations to Blender
+
+`core/` - Core package; contains all the algorithms
+
+`demos/` - Demos to play with & contains the main generate.sh script for generating videos
+
+`gui/` - Graphical modules -- mostly irrelevant here
+
+`scenarios/` - Config files of different possible scenarios
 
 
 Usage
