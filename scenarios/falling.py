@@ -5,7 +5,7 @@ import random
 DENSITY = 1
 
 # Randomness: ball size
-BALL_RADIUS = 0.008  # [m]
+BALL_RADIUS = random.uniform(0.018, 0.032) # [m]
 BALL_MASS = BALL_RADIUS * math.pi * (4/3) * DENSITY  # [kg]
 BALL_RESTITUTION = 0.8
 
@@ -16,7 +16,8 @@ HIGH_PLANK_RESTITUTION = 0.8
 BASE_PLANK_LWH = (0.235, 0.001, 0.1)  # [m]
 
 # Randomness: plank size
-FLAT_SUPPORT_LWH = (.04, .05, .02)  # [m]
+length = random.uniform(0.04, 0.06)
+FLAT_SUPPORT_LWH = (length, length, length)  # [m]
 HIGH_PLANK_MASS = FLAT_SUPPORT_LWH[0] * FLAT_SUPPORT_LWH[1] * FLAT_SUPPORT_LWH[2] * DENSITY # [kg]
 
 # Randomness: plank or ball
@@ -87,7 +88,7 @@ DATA = {
             },
             'xform': {
                 # Randomness: trach height and angle
-                'value': [-.1, TOP_TRACK_LWHT[1]/2+.01, .3+(random.uniform(-.05,.05)), 0, 0, 20+(random.uniform(-20,10))],
+                'value': [-.1, TOP_TRACK_LWHT[1]/2+.01, .3+(random.uniform(-.1,.1)), 0, 0, 20+(random.uniform(-20,10))],
                 'range': [
                     [-BASE_PLANK_LWH[0]/3, 0],
                     None,

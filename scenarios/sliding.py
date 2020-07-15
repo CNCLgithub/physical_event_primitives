@@ -8,7 +8,8 @@ TOP_TRACK_LWHT = (0.25, 0.10, 0.002, 0.005)  # [m]
 HIGH_PLANK_RESTITUTION = 0.3
 
 # Randomness: Size of plank
-FLAT_SUPPORT_LWH = (.05, .05, .05)  # [m]
+length = random.uniform(0.04, 0.06)
+FLAT_SUPPORT_LWH = (length, length, length)  # [m]
 HIGH_PLANK_MASS = FLAT_SUPPORT_LWH[0] * FLAT_SUPPORT_LWH[1] * FLAT_SUPPORT_LWH[2] * DENSITY # [kg]
 
 
@@ -38,7 +39,7 @@ DATA = {
             'args': {
                 'extents': FLAT_SUPPORT_LWH,
                 # Randomness: force on object
-                'force': (.2,0,0),
+                'force': (random.uniform(.10, .12),0,0),
                 'b_mass': HIGH_PLANK_MASS,
                 'b_restitution': HIGH_PLANK_RESTITUTION
             },
@@ -46,9 +47,9 @@ DATA = {
             'xform': {
                 'value': [
                     -TOP_TRACK_LWHT[0]*3,
-                    .02,
+                    .05,
                     FLAT_SUPPORT_LWH[0]/2,
-                    0, 0, 90
+                    0, 0, 0
                 ],
             }
         }

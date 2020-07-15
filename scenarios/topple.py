@@ -8,7 +8,8 @@ HIGH_PLANK_LWH = (0.235, 0.023, 0.008)  # [m]
 HIGH_PLANK_RESTITUTION = 0.01
 
 # Randomness: size of plank
-FLAT_SUPPORT_LWH = (.09, .005, .03)  # [m]
+size = random.uniform(.9, 1.1)
+FLAT_SUPPORT_LWH = (.1*size, .015*size, .04*size)  # [m]
 HIGH_PLANK_MASS = FLAT_SUPPORT_LWH[0] * FLAT_SUPPORT_LWH[1] * FLAT_SUPPORT_LWH[2] * DENSITY # [kg]
 
 
@@ -36,7 +37,7 @@ DATA = {
             'args': {
                 'extents': FLAT_SUPPORT_LWH,
                 # Randomness: force on plank
-                'force': (0,.005,0),
+                'force': (0,random.uniform(.005,.07),0),
                 'b_mass': HIGH_PLANK_MASS,
                 'b_restitution': HIGH_PLANK_RESTITUTION
             },

@@ -6,18 +6,19 @@ import random
 DENSITY = 1
 
 # Randomness: size of ball
-BALL_RADIUS = 0.02  # [m]
+BALL_RADIUS = random.uniform(0.018, 0.032)  # [m]
 BALL_MASS = BALL_RADIUS * math.pi * (4/3) * DENSITY  # [kg]
 BALL_RESTITUTION = 0.8
 
 TOP_TRACK_LWHT = (0.3, 0.025, 0.006, 0.003)  # [m]
 
 # Randomness: size of occluder
-HIGH_PLANK_LWH = (0.1, 0.001, 0.4)  # [m]
+HIGH_PLANK_LWH = (random.uniform(.08, .2), 0.001, 0.6)  # [m]
 HIGH_PLANK_RESTITUTION = 0.8
 
 # Randomness: size of plank
-FLAT_SUPPORT_LWH = (.02, .025, .02)  # [m]
+length = random.uniform(0.04, 0.06)
+FLAT_SUPPORT_LWH = (length, length, length)  # [m]
 HIGH_PLANK_MASS = FLAT_SUPPORT_LWH[0] * FLAT_SUPPORT_LWH[1] * FLAT_SUPPORT_LWH[2] * DENSITY # [kg]
 
 # Randomness: Ball or Plank
@@ -44,12 +45,12 @@ else:
             'args': {
                 'extents': FLAT_SUPPORT_LWH,
                 # Randomness: force on object
-                'force': (.01,0,0),
+                'force': (random.uniform(.10, .13),0,0),
                 'b_mass': HIGH_PLANK_MASS,
                 'b_restitution': HIGH_PLANK_RESTITUTION
             },
             'xform': {
-                'value': [-TOP_TRACK_LWHT[0]/2+.01, 0, FLAT_SUPPORT_LWH[0]/2,
+                'value': [-TOP_TRACK_LWHT[0], FLAT_SUPPORT_LWH[0]/2, FLAT_SUPPORT_LWH[0]/2,
                     0, 0, 90],
             }
     }
