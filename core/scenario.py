@@ -467,10 +467,10 @@ def simulate_scene(scene: Scene, duration, timestep, callbacks=None):
     while time <= duration:
         for c in callbacks:
             res = c(time)
-            if res is not None and not res:
-                do_break = True
-        if do_break:
-            break
+        #     if res is not None and not res:
+        #         do_break = True
+        # if do_break:
+        #     break
         world.do_physics(timestep, 0)
         time += timestep
     # Transforms are globally cached by default. Out of the regular

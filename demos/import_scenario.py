@@ -22,7 +22,7 @@ from core.scenario import (StateObserver, import_scenario_data,  # noqa: E402
 from gui.viewers import PhysicsViewer, ScenarioViewer, Replayer  # noqa: E402
 
 FPS = 500
-DURATION = 4
+DURATION = 10
 
 def import_scenario(py_scenario_path, gen_json_path, debug, scenario_dir, trace):
     scenario_data = import_scenario_data(py_scenario_path, gen_json_path)
