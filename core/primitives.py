@@ -267,6 +267,7 @@ class Ball(PrimitiveBase):
             self._set_properties(body)
             shape = bt.BulletSphereShape(self.radius)
             body.add_shape(shape)
+            body.setFriction(0.8)
             body.applyCentralForce(self.force)
             bodies = [body]
             path = NodePath(body)
@@ -331,6 +332,7 @@ class Box(PrimitiveBase):
             shape = bt.BulletBoxShape(Vec3(*self.extents) / 2)
             #  shape.set_margin(.0001)
             body.add_shape(shape)
+            body.setFriction(0.2)
             body.applyCentralForce(self.force)
             bodies = [body]
             path = NodePath(body)
