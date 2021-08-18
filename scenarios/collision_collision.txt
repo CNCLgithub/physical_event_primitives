@@ -1,0 +1,35 @@
+collision_collision - ball, ball ball plank, 
+	good
+collision_containment - ball ball, ball plank, plank ball
+	slow down
+collision_falling - ball ball, plank ball, ball plank
+	good
+collision_occlusion - ball ball, ball plank, plank ball
+	good
+
+containment_collision - ball, plank
+	slow, shorten container
+containment_falling - ball
+	slow
+containment_occlusion - ball
+	slow
+
+containment_containment
+
+falling_collision - ball ball, ball plank, plank ball
+	ball ball done
+falling_containment - ball, maybe plank
+	slow a lot, no tilt to ramp - make it a slow push
+falling_falling - ball
+	done
+falling_occlusion - ball, maybe plank
+	slow a lot, no tilt to ramp - make it a slow push
+
+occlusion_collision - ball, plank
+	good
+occlusion_containment - ball, plank
+	slow
+occlusion_falling - ball, plank
+	way slower
+occlusion_occlusion - ball, plank?
+	slow down
