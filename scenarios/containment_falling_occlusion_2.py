@@ -4,7 +4,7 @@ import random
 
 DENSITY = 1
 # Randomness: Size of Ball
-BALL_RADIUS = .024   # [m]
+BALL_RADIUS = .025   # [m]
 BALL_MASS = BALL_RADIUS**3 * math.pi * (4/3) * DENSITY  # [kg]
 BALL_RESTITUTION = 0.8
 
@@ -29,9 +29,7 @@ GOBLET_R2 = 0.03  # [m]
 GOBLET_EPS = .002  # [m]
 
 # Randomness: Ball or plank
-if random.random() < 1:
-# if False:
-    movingObject = {
+movingObject = {
             'name': "ball",
             'type': "Ball",
             'args': {
@@ -46,25 +44,7 @@ if random.random() < 1:
                           0, 0, 0]
             }
     }
-else:
-    movingObject = {
-            'name': "plank",
-            'type': "Box",
-            'args': {
-                'extents': FLAT_SUPPORT_LWH,
-                # Randomness: force on plank
-                'force': (random.uniform(.08, .08),0,0),
-                'b_mass': HIGH_PLANK_MASS,
-                'b_restitution': HIGH_PLANK_RESTITUTION
-            },
-            'parent': "track",
-            'xform': {
-                'value': [
-                    0, 0, length/2,
-                          0, 0, 0
-                ],
-            }
-    }
+
 
 DATA = {
     'scene': [
@@ -91,10 +71,7 @@ DATA = {
                 'extents': BOTTOM_TRACK_LWHT,
             },
             'xform': {
-                'value': [0,
-                          BOTTOM_TRACK_LWHT[1]/2+.01,
-                          .37,
-                          0, 0, 0],
+                'value': [-0.05,BOTTOM_TRACK_LWHT[1]/2+.01,.37, 0, 0, -3],
             }
         },
          {
@@ -123,7 +100,7 @@ DATA = {
             'parent': "track",
             # Randomness: position of goblet
             'xform': {
-                'value': [-.35, 0, .04, 0, 0, 87],
+                'value': [-.4, 0, .04, 0, 0, 95],
             }
         },
         {
@@ -142,7 +119,7 @@ DATA = {
             'name': "plank5",
             'type': "Box",
             'args': {
-                'extents': (.06, .06, .06),
+                'extents': (.06, .03, .03),
                 # Randomness: force on plank, standard: .005
                 'force': (0,0,0),
                 'b_mass': 0,
@@ -150,12 +127,7 @@ DATA = {
             },
              # Randomness: plank location
              'xform': {
-             'value': [
-                .44,
-                .6,
-                .03,
-                0, 0, 0
-                ],
+             'value': [.48, .58, .03, 0, 0, 0],
             }
         },  
         {
@@ -181,7 +153,7 @@ DATA = {
         },
         # Randomness: cylinder location
         'xform': {
-            'value': [.1, 0.8, 0.08,
+            'value': [.1, 0.9, 0.08,
                       0, 0, 0]
         }
     },     
@@ -198,7 +170,7 @@ DATA = {
             },
             # Randomness: position of goblet
             'xform': {
-                'value': [-.2, .05, 0, 0, 0, 0],
+                'value': [-.3, .1, 0, 0, 0, 0],
             }
         },
         {
@@ -214,8 +186,8 @@ DATA = {
              # Randomness: plank location
              'xform': {
              'value': [
-                .2,
-                .2,
+                .3,
+                .6,
                 .03,
                 0, 0, 0
                 ],

@@ -15,7 +15,7 @@ HIGH_PLANK_LWH = (0.235, 0.023, 0.008)  # [m]
 HIGH_PLANK_RESTITUTION = 0.8
 
 # Randomness: Size of plank
-length = random.uniform(0.03, 0.04)
+length = .04
 FLAT_SUPPORT_LWH = (length, length, length)  # [m]
 HIGH_PLANK_MASS = FLAT_SUPPORT_LWH[0] * FLAT_SUPPORT_LWH[1] * FLAT_SUPPORT_LWH[2] * DENSITY # [kg]
 
@@ -26,15 +26,13 @@ GOBLET_R2 = 0.05  # [m]
 GOBLET_EPS = .002  # [m]
 
 
-if random.random() < 1:
-# if False:
-    movingObject = {
+movingObject = {
             'name': "ball",
             'type': "Ball",
             'args': {
                 'radius': BALL_RADIUS,
                 # Randomness: force on object, standard = 25
-                'force': (.025,0,0),
+                'force': (.014,0,0),
                 'b_mass': BALL_MASS,
                 'b_restitution': BALL_RESTITUTION
             },
@@ -44,30 +42,8 @@ if random.random() < 1:
                           0, 0, 0]
             }
         }
-else:
-    movingObject = {
-            'name': "plank",
-            'type': "Box",
-            'args': {
-                'extents': FLAT_SUPPORT_LWH,
-                # Randomness: force on object
-                'force': (random.uniform(.09, .105),0,0),
-                'b_mass': HIGH_PLANK_MASS,
-                'b_restitution': HIGH_PLANK_RESTITUTION
-            },
-            # Randomness: position of object
-            'xform': {
-                'value': [
-                    -.15,
-                    .2,
-                    FLAT_SUPPORT_LWH[0]/2,
-                    0, 0, 0
-                ],
-            }
-        }
-        
-if random.random() < 1:
-    movingObject2 = {
+
+movingObject2 = {
         'name': "ball2",
         'type': "Ball",
         'args': {
@@ -81,35 +57,15 @@ if random.random() < 1:
         'xform': {
             'value': [
                 .35,
-                .2,
+                .16,
                 BALL_RADIUS+.002,
                 0, 0, 90
             ],
         }
     }
-else:
-    movingObject2 = {
-            'name': "plank2",
-            'type': "Box",
-            'args': {
-                'extents': FLAT_SUPPORT_LWH,
-                'force': (0,0,0),
-                'b_mass': HIGH_PLANK_MASS,
-                'b_restitution': HIGH_PLANK_RESTITUTION
-            },
-            # Randomness: position of object
-            'xform': {
-                'value': [
-                    .35,
-                    .2,
-                    FLAT_SUPPORT_LWH[0]/2,
-                    0, 0, 90
-                ],
-            }
-        }
 
-if random.random() < 1:
-    movingObject3 = {
+
+movingObject3 = {
         'name': "ball4",
         'type': "Ball",
         'args': {
@@ -129,27 +85,6 @@ if random.random() < 1:
             ],
         }
     }
-else:
-    movingObject3 = {
-            'name': "plank4",
-            'type': "Box",
-            'args': {
-                'extents': FLAT_SUPPORT_LWH,
-                'force': (0,0,0),
-                'b_mass': HIGH_PLANK_MASS,
-                'b_restitution': HIGH_PLANK_RESTITUTION
-            },
-            # Randomness: position of object
-            'xform': {
-                'value': [
-                    .55,
-                    .2,
-                    FLAT_SUPPORT_LWH[0]/2,
-                    0, 0, 90
-                ],
-            }
-        }
-
 
 DATA = {
     'scene': [

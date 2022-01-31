@@ -31,9 +31,7 @@ GOBLET_EPS = .002  # [m]
 
 # print(str(BALL_MASS) + str(HIGH_PLANK_MASS))
 
-# Randomness: plank or ball
-if random.random() < 1:
-    movingObject = {
+movingObject = {
         'name': "ball",
         'type': "Ball",
         'args': {
@@ -52,32 +50,9 @@ if random.random() < 1:
                 0, 0, 0
             ]
         }
-    }
-else:
-    movingObject = {
-        'name': "plank",
-        'type': "Box",
-        'args': {
-            'extents': FLAT_SUPPORT_LWH,
-            # Randomness: force on object
-            'force': (random.uniform(.09, .105),0,0),
-            'b_mass': HIGH_PLANK_MASS,
-            'b_restitution': HIGH_PLANK_RESTITUTION
-        },
-        # Randomness: position of object
-        'xform': {
-            'value': [
-                -TOP_TRACK_LWHT[0]*3,
-                .2,
-                FLAT_SUPPORT_LWH[0]/2,
-                0, 0, 0
-            ],
-        }
-    }
+}
 
-# if True:
-if random.random() < 1:
-    movingObject2 = {
+movingObject2 = {
         'name': "ball2",
         'type': "Ball",
         'args': {
@@ -97,29 +72,8 @@ if random.random() < 1:
             ],
         }
     }
-else:
-    movingObject2 = {
-            'name': "plank2",
-            'type': "Box",
-            'args': {
-                'extents': FLAT_SUPPORT_LWH,
-                'force': (0,0,0),
-                'b_mass': HIGH_PLANK_MASS,
-                'b_restitution': HIGH_PLANK_RESTITUTION
-            },
-            # Randomness: position of object
-            'xform': {
-                'value': [
-                    0,
-                    .2,
-                    .025,
-                    0, 0, 90
-                ],
-            }
-        }
 
-if random.random() < 1:
-    movingObject3 = {
+movingObject3 = {
         'name': "ball4",
         'type': "Ball",
         'args': {
@@ -139,28 +93,6 @@ if random.random() < 1:
             ],
         }
     }
-else:
-    movingObject3 = {
-            'name': "plank3",
-            'type': "Box",
-            'args': {
-                'extents': FLAT_SUPPORT_LWH,
-                'force': (0,0,0),
-                'b_mass': HIGH_PLANK_MASS,
-                'b_restitution': HIGH_PLANK_RESTITUTION
-            },
-            # Randomness: position of object
-            'xform': {
-                'value': [
-                    .3,
-                    .2,
-                    .025,
-                    0, 0, 90
-                ],
-            }
-        }
-
-
 
 DATA = {
     'scene': [

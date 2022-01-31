@@ -28,9 +28,7 @@ GOBLET_R2 = 0.05  # [m]
 GOBLET_EPS = .002  # [m]
 
 # Randomness: Ball or Plank
-# if False:
-if random.random() < 1:
-    movingObject = {
+movingObject = {
             'name': "ball",
             'type': "Ball",
             'args': {
@@ -43,22 +41,6 @@ if random.random() < 1:
             'xform': {
                 'value': [.55, .1, BALL_RADIUS+.002,
                           0, 0, 0]
-            }
-    }
-else:
-    movingObject = { 
-            'name': "plank",
-            'type': "Box",
-            'args': {
-                'extents': FLAT_SUPPORT_LWH,
-                # Randomness: force on object, standard: .01
-                'force': (random.uniform(.08, .08),0,0),
-                'b_mass': HIGH_PLANK_MASS,
-                'b_restitution': HIGH_PLANK_RESTITUTION
-            },
-            'xform': {
-                'value': [.55, .1, FLAT_SUPPORT_LWH[0]/2,
-                    0, 0, 0],
             }
     }
 
@@ -149,8 +131,7 @@ DATA = {
         },
         # Randomness: ball location
         'xform': {
-            'value': [.23, 0.6, BALL_RADIUS+.002,
-                      0, 0, 0]
+            'value': [.01, 0.6, BALL_RADIUS+.002,0, 0, 0]
         }
     },  
     {
@@ -197,7 +178,7 @@ DATA = {
             'name': "plank5",
             'type': "Box",
             'args': {
-                'extents': (.06, .06, .06),
+                'extents': (.06, .03, .03),
                 # Randomness: force on plank, standard: .005
                 'force': (0,0,0),
                 'b_mass': 0,
@@ -205,12 +186,7 @@ DATA = {
             },
              # Randomness: plank location
              'xform': {
-             'value': [
-                .15,
-                .63,
-                .034,
-                0, 0, 0
-                ],
+             'value': [.2, .73, .034, 0, 0, 0],
             }
         }, 
         {
@@ -224,8 +200,7 @@ DATA = {
         },
         # Randomness: ball location
         'xform': {
-            'value': [.4, 0.4, BALL_RADIUS+.002,
-                      0, 0, 0]
+            'value': [.4, 0.4, BALL_RADIUS+.002,0, 0, 0]
         }
     },  
     ],

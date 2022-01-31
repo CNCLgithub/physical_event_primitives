@@ -5,14 +5,14 @@ import random
 DENSITY = 1
 
 # Randomness: Size of ball, standard = .02
-BALL_RADIUS = random.uniform(0.018, 0.032)    # [m]
+BALL_RADIUS = 0.024    # [m]
 BALL_MASS = BALL_RADIUS**3 * math.pi * (4/3) * DENSITY  # [kg]
 BALL_RESTITUTION = 0.3
 
 PLANK_RESTITUTION = 0.3
 TOP_TRACK_LWHT = (0.25, 0.10, 0.002, 0.005)  # [m]
 # Randomness: size of plank, standard: 1
-length = random.uniform(0.04, 0.06)
+length = .05
 BLOCK_LWH = (length, length, length)  # [m]
 BLOCK_MASS = BLOCK_LWH[0] * BLOCK_LWH[1] * BLOCK_LWH[2] * DENSITY
 
@@ -20,10 +20,10 @@ BLOCK_MASS = BLOCK_LWH[0] * BLOCK_LWH[1] * BLOCK_LWH[2] * DENSITY
 HIGH_PLANK_LWH = (0.235, 0.023, 0.008)  # [m]
 HIGH_PLANK_RESTITUTION = 0.03
 
-OCCLUDER_LWH = (random.uniform(.08, .2), 0.001, 0.2)  # [m]
+OCCLUDER_LWH = (.14, 0.001, 0.2)  # [m]
 
 # Randomness: size of plank, standard: 1
-size = random.uniform(.9, 1.1)
+size = 1
 FLAT_SUPPORT_LWH = (.1*size, .015*size, .04*size)  # [m]
 HIGH_PLANK_MASS = FLAT_SUPPORT_LWH[0] * FLAT_SUPPORT_LWH[1] * FLAT_SUPPORT_LWH[2] * DENSITY # [kg]
 
@@ -34,33 +34,12 @@ GOBLET_R2 = 0.03  # [m]
 GOBLET_EPS = .002  # [m]
 
 # Randomness: plank or ball
-if random.random() < 0:
-    movingObject = {
-        'name': "plank",
-        'type': "Box",
-            'args': {
-                'extents': BLOCK_LWH,
-                # Randomness: force on object, standard: .01
-                'force': (0,0,0),
-                'b_mass': BLOCK_MASS,
-                'b_restitution': PLANK_RESTITUTION
-            },
-            'xform': {
-                'value': [
-                    .09,
-                    .2,
-                    BLOCK_LWH[0]/2,
-                    0, 0, 0
-                ],
-            }
-    }
-else:
-    movingObject = {
+movingObject = {
         'name': "ball",
         'type': "Ball",
         'args': {
             'radius': BALL_RADIUS,
-            'force': (random.uniform(.015,.025),0,0),
+            'force': (0,0,0),
             'b_mass': BALL_MASS,
             'b_restitution': BALL_RESTITUTION
         },
@@ -100,7 +79,7 @@ DATA = {
             'xform': {
                 # Randomness: track height and angle 
                 # 10+(random.uniform(-10,10))
-                'value': [-.2, TOP_TRACK_LWHT[1]/2+.01, .45, 0, 0, 0]
+                'value': [-.2, TOP_TRACK_LWHT[1]/2+.03, .35, 0, 0, 4]
             }
         },
         {
@@ -142,7 +121,7 @@ DATA = {
             'xform': {
                 'value': [
                     .6,
-                    .08,
+                    .03,
                     FLAT_SUPPORT_LWH[0]/2,
                     45, 0, 90
                 ],
@@ -193,7 +172,7 @@ DATA = {
             'name': "plank5",
             'type': "Box",
             'args': {
-                'extents': (.07, .07, .07),
+                'extents': (.06, .03, .03),
                 # Randomness: force on plank, standard: .005
                 'force': (0,0,0),
                 'b_mass': 0,
@@ -202,8 +181,8 @@ DATA = {
              # Randomness: plank location
              'xform': {
              'value': [
-                .18,
-                .63,
+                .23,
+                .5,
                 .034,
                 0, 0, 0
                 ],
@@ -240,7 +219,7 @@ DATA = {
         'name': "ball5",
         'type': "Ball",
         'args': {
-            'radius': random.uniform(0.032, 0.043),
+            'radius': BALL_RADIUS,
             'force': (0,0,0),
             'b_mass': 0,
             'b_restitution': BALL_RESTITUTION
@@ -264,7 +243,7 @@ DATA = {
             },
             # Randomness: position of goblet
             'xform': {
-                'value': [-.2, 0.4, 0.043, 0, 0, 86],
+                'value': [-.25, 0.4, 0.043, 0, 0, 86],
             }
         },
 

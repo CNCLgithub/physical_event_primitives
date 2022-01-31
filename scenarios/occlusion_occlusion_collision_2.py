@@ -13,51 +13,32 @@ BALL_RESTITUTION = 0.8
 TOP_TRACK_LWHT = (0.3, 0.025, 0.006, 0.003)  # [m]
 
 # Randomness: size of occluder
-HIGH_PLANK_LWH = (random.uniform(.08, .2), 0.001, 0.2)  # [m]
+HIGH_PLANK_LWH = (.14, 0.001, 0.2)  # [m]
 HIGH_PLANK_RESTITUTION = 0.3
 
 # Randomness: size of plank
-length = random.uniform(0.04, 0.06)
+length = .05
 FLAT_SUPPORT_LWH = (length, length, length)  # [m]
 HIGH_PLANK_MASS = FLAT_SUPPORT_LWH[0] * FLAT_SUPPORT_LWH[1] * FLAT_SUPPORT_LWH[2] * DENSITY # [kg]
 
 # Randomness: Ball or Plank
 # if False:
-if random.random() < 1:
-    movingObject = {
+movingObject = {
             'name': "ball",
             'type': "Ball",
             'args': {
                 'radius': BALL_RADIUS,
                 # Randomness: force on object
-                'force': (.03,0,0),
+                'force': (0.01,0,0),
                 'b_mass': BALL_MASS,
                 'b_restitution': BALL_RESTITUTION
             },
             'xform': {
-                'value': [-.5, BALL_RADIUS*4, BALL_RADIUS+.002,
+                'value': [-.5, BALL_RADIUS*4, BALL_RADIUS,
                           0, 0, 0]
             }
     }
-else:
-    movingObject = { 
-            'name': "plank",
-            'type': "Box",
-            'args': {
-                'extents': FLAT_SUPPORT_LWH,
-                # Randomness: force on object, standard: .01
-                'force': (random.uniform(.08, .08),0,0),
-                'b_mass': HIGH_PLANK_MASS,
-                'b_restitution': HIGH_PLANK_RESTITUTION
-            },
-            'xform': {
-                'value': [-.5, FLAT_SUPPORT_LWH[0]/2, FLAT_SUPPORT_LWH[0]/2,
-                    0, 0, 0],
-            }
-    }
-
-if random.random() < 1:
-    movingObject2 = {
+movingObject2 = {
         'name': "ball2",
         'type': "Ball",
         'args': {
@@ -70,33 +51,13 @@ if random.random() < 1:
         # Randomness: position of object
         'xform': {
             'value': [
-                .55,
+                .58,
                 BALL_RADIUS*4,
-                BALL_RADIUS+.002,
+                BALL_RADIUS,
                 0, 0, 90
             ],
         }
     }
-else:
-    movingObject2 = {
-            'name': "plank2",
-            'type': "Box",
-            'args': {
-                'extents': FLAT_SUPPORT_LWH,
-                'force': (0,0,0),
-                'b_mass': HIGH_PLANK_MASS,
-                'b_restitution': HIGH_PLANK_RESTITUTION
-            },
-            # Randomness: position of object
-            'xform': {
-                'value': [
-                    .5,
-                    BALL_RADIUS*4,
-                    .025,
-                    0, 0, 90
-                ],
-            }
-        }
 
 DATA = {
     'scene': [
@@ -146,7 +107,7 @@ DATA = {
             'name': "plank5",
             'type': "Box",
             'args': {
-                'extents': (.06, .06, .06),
+                'extents': (.06, .03, .03),
                 # Randomness: force on plank, standard: .005
                 'force': (0,0,0),
                 'b_mass': 0,
@@ -155,7 +116,7 @@ DATA = {
              # Randomness: plank location
              'xform': {
              'value': [
-                .18,
+                .24,
                 .5,
                 .03,
                 0, 0, 0
@@ -173,9 +134,9 @@ DATA = {
         },
         # Randomness: ball location
         'xform': {
-            'value': [ .5,
+            'value': [ .52,
                .5,
-                BALL_RADIUS+.002,
+                BALL_RADIUS,
                 0, 0, 90]
         }
     }, 
@@ -210,7 +171,7 @@ DATA = {
         },
         # Randomness: ball location
         'xform': {
-            'value': [.3, 0.6, BALL_RADIUS+.002,
+            'value': [.34, 0.6, BALL_RADIUS,
                           0, 0, 0]
         }
     }, 
@@ -222,7 +183,7 @@ DATA = {
         },
         # Randomness: cylinder location
         'xform': {
-            'value': [.1, 0.9, 0.08,
+            'value': [.1, 0.94, 0.08,
                       0, 0, 0]
         }
     },   

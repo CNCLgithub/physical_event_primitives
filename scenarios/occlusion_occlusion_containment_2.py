@@ -13,11 +13,11 @@ BALL_RESTITUTION = 0.8
 TOP_TRACK_LWHT = (0.3, 0.025, 0.006, 0.003)  # [m]
 
 # Randomness: size of occluder
-HIGH_PLANK_LWH = (random.uniform(.08, .2), 0.001, 0.2)  # [m]
+HIGH_PLANK_LWH = (.14, 0.001, 0.2)  # [m]
 HIGH_PLANK_RESTITUTION = 0.3
 
 # Randomness: size of plank
-length = random.uniform(0.04, 0.06)
+length = .05
 FLAT_SUPPORT_LWH = (length, length, length)  # [m]
 HIGH_PLANK_MASS = FLAT_SUPPORT_LWH[0] * FLAT_SUPPORT_LWH[1] * FLAT_SUPPORT_LWH[2] * DENSITY # [kg]
 
@@ -29,36 +29,19 @@ GOBLET_EPS = .002  # [m]
 
 # Randomness: Ball or Plank
 # if False:
-if random.random() < 1:
-    movingObject = {
+movingObject = {
             'name': "ball",
             'type': "Ball",
             'args': {
                 'radius': BALL_RADIUS,
                 # Randomness: force on object
-                'force': (.03,0,0),
+                'force': (.01,0,0),
                 'b_mass': BALL_MASS,
                 'b_restitution': BALL_RESTITUTION
             },
             'xform': {
-                'value': [-.6, .2, BALL_RADIUS,
+                'value': [-.44, .2, BALL_RADIUS,
                           0, 0, 0]
-            }
-    }
-else:
-    movingObject = { 
-            'name': "plank",
-            'type': "Box",
-            'args': {
-                'extents': FLAT_SUPPORT_LWH,
-                # Randomness: force on object, standard: .01
-                'force': (random.uniform(.08, .08),0,0),
-                'b_mass': HIGH_PLANK_MASS,
-                'b_restitution': HIGH_PLANK_RESTITUTION
-            },
-            'xform': {
-                'value': [-.6, .2, .2,
-                    0, 0, 0],
             }
     }
 
@@ -97,7 +80,7 @@ DATA = {
             'name': "plank5",
             'type': "Box",
             'args': {
-                'extents': (.06, .06, .06),
+                'extents': (.06, .03, .03),
                 # Randomness: force on plank, standard: .005
                 'force': (0,0,0),
                 'b_mass': 0,
@@ -106,8 +89,8 @@ DATA = {
              # Randomness: plank location
              'xform': {
              'value': [
-                .07,
-                .62,
+                .12,
+                .58,
                 .03,
                 0, 0, 0
                 ],
@@ -152,7 +135,7 @@ DATA = {
             },
             # Randomness: position of occluder
             'xform': {
-                'value': [.52, .45, GOBLET_R1, 0, 10, -90],
+                'value': [.53, .45, GOBLET_R1, 0, 10, -90],
             }
         },   
          {
@@ -206,7 +189,7 @@ DATA = {
         },
         # Randomness: ball location
         'xform': {
-            'value': [.16, 0.4, BALL_RADIUS+.002,
+            'value': [.18, 0.45, BALL_RADIUS,
                           0, 0, 0]
         }
     }, 
@@ -222,17 +205,6 @@ DATA = {
                       0, 0, 0]
         }
     },     
-    {
-        'name': "cylinder",
-        'type': "Cylinder",
-        'args': {
-            'extents': [0.01, 0.05]
-        },
-        # Randomness: cylinder location
-        'xform': {
-            'value': [.2, 0.9, 0.08,
-                      0, 0, 0]
-        }
-    },  
+
     ],
 }

@@ -2,7 +2,7 @@ from math import atan, degrees
 import math
 import random
 
-DENSITY = 1
+DENSITY = 500
 # Randomness: ball size, standard: .008 (changed to not random for consistent ball velocity)
 BALL_RADIUS = .025   # [m]
 BALL_MASS = BALL_RADIUS**3 * math.pi * (4/3) * DENSITY  # [kg]
@@ -14,10 +14,10 @@ HIGH_PLANK_LWH = (0.235, 0.023, 0.008)  # [m]
 HIGH_PLANK_RESTITUTION = 0.8
 BASE_PLANK_LWH = (0.235, 0.001, 0.1)  # [m]
 
-OCCLUDER_LWH = (random.uniform(.08, .2), 0.001, 0.6)  # [m]
+OCCLUDER_LWH = (.14, 0.001, 0.6)  # [m]
 
 # Randomness: plank size, standard: 1
-length = random.uniform(0.04, 0.06)
+length = 0.05
 FLAT_SUPPORT_LWH = (length, length, length)  # [m]
 HIGH_PLANK_MASS = FLAT_SUPPORT_LWH[0] * FLAT_SUPPORT_LWH[1] * FLAT_SUPPORT_LWH[2] * DENSITY # [kg]
 
@@ -27,42 +27,19 @@ GOBLET_R1 = .05  # [m]
 GOBLET_R2 = 0.025  # [m]
 GOBLET_EPS = .002  # [m]
 
-# Randomness: plank or ball
-if random.random() < 0:
-    movingObject = {
-        'name': "plank",
-        'type': "Box",
-        'args': {
-            'extents': FLAT_SUPPORT_LWH,
-            'force': .001,
-            'b_mass': HIGH_PLANK_MASS,
-            'b_restitution': HIGH_PLANK_RESTITUTION
-        },
-        'parent': "track",
-        # Randomness: plank location
-        'xform': {
-            'value': [
-                -TOP_TRACK_LWHT[0]/2-.03,
-                0,
-                FLAT_SUPPORT_LWH[0]/2 + .005,
-                0, 0, 0
-            ],
-        }
-    }
-else:
-    movingObject = {
+movingObject = {
         'name': "ball",
         'type': "Ball",
         'args': {
             'radius': BALL_RADIUS,
-            'force': (0.001,0,0),
+            'force': (0,0,0),
             'b_mass': BALL_MASS,
             'b_restitution': BALL_RESTITUTION
         },
         'parent': "track",
         # Randomness: ball location
         'xform': {
-            'value': [-TOP_TRACK_LWHT[0]/2-.03, 0, BALL_RADIUS+.002,
+            'value': [-TOP_TRACK_LWHT[0]/2, 0, BALL_RADIUS+.002,
                       0, 0, 0]
         }
     }
@@ -96,7 +73,7 @@ DATA = {
             'xform': {
                 # Randomness: track height 
                 # 10+(random.uniform(-10,10))
-                'value': [-.066, TOP_TRACK_LWHT[1]/2+.01, .45, 0, 0, 0.5]
+                'value': [-.12, TOP_TRACK_LWHT[1]/2+.01, .45, 0, 0, 3]
             }
         },
         {
@@ -108,7 +85,7 @@ DATA = {
             'xform': {
                 # Randomness: track height and angle 
                 # 10+(random.uniform(-10,10))
-                'value': [.36, TOP_TRACK_LWHT[1]/2+.01, .20, 0, 0, 0]
+                'value': [.3, TOP_TRACK_LWHT[1]/2+.01, .20, 0, 0, 3]
             }
         },
         {

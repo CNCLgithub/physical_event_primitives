@@ -3,12 +3,12 @@ import math
 
 import random
 
-DENSITY = 1
+DENSITY = 100
 
 # Randomness: Size of ball, standard = .02
 BALL_RADIUS = .025   # [m]
 BALL_MASS = BALL_RADIUS**3 * math.pi * (4/3) * DENSITY  # [kg]
-BALL_RESTITUTION = 0.3
+BALL_RESTITUTION = 0.8
 
 TOP_TRACK_LWHT = (2, 0.25, 0.01, 0.01)  # [m]
 BOTTOM_TRACK_LWHT = TOP_TRACK_LWHT  # [m]
@@ -26,131 +26,38 @@ PLANK_RESTITUTION = 0.3
 # print(str(BALL_MASS) + str(HIGH_PLANK_MASS))
 
 # Randomness: plank or ball
-if random.random() < 1:
-# if False:
-    movingObject = {
+movingObject = {
             'name': "ball",
             'type': "Ball",
             'args': {
                 'radius': BALL_RADIUS,
                 # Randomness: force on object, standard = 25
-                'force': (.009,0,0),
+                'force': (0.035,0,0),
                 'b_mass': BALL_MASS,
                 'b_restitution': BALL_RESTITUTION
             },
             'parent': "track",
             # Randomness: position of object
             'xform': {
-                'value': [0, 0, BALL_RADIUS+.002,
-                          0, 0, 0]
+                'value': [0.38, 0, BALL_RADIUS+0.002, 0, 0, 0]
             }
         }
-    # if True:
-    if random.random() < 1:
-        movingObject2 = {
-            'name': "ball2",
-            'type': "Ball",
-            'args': {
-                'radius': BALL_RADIUS,
-                'force': (0,0,0),
-                'b_mass': BALL_MASS,
-                'b_restitution': BALL_RESTITUTION
-            },
-            'parent': "track",
-            # Randomness: position of object
-            'xform': {
-                'value': [
-                    .7,
-                    0,
-                    BALL_RADIUS+.002,
-                    0, 0, 90
-                ],
-            }
-        }
-    else:
-        movingObject2 = {
-                'name': "plank2",
-                'type': "Box",
-                'args': {
-                    'extents': FLAT_SUPPORT_LWH,
-                    'force': (0,0,0),
-                    'b_mass': HIGH_PLANK_MASS,
-                    'b_restitution': HIGH_PLANK_RESTITUTION
-                },
-                'parent': "track",
-                # Randomness: position of object
-                'xform': {
-                    'value': [
-                        .7,
-                    0,
-                    FLAT_SUPPORT_LWH[0]/2,
-                    0, 0, 90
-                    ],
-                }
-            }
-else:
-    movingObject = {
-            'name': "plank",
-            'type': "Box",
-            'args': {
-                'extents': FLAT_SUPPORT_LWH,
-                # Randomness: force on object
-                'force': (random.uniform(.09, .105),0,0),
-                'b_mass': HIGH_PLANK_MASS,
-                'b_restitution': HIGH_PLANK_RESTITUTION
-            },
-            'parent': "track", 
-            # Randomness: position of object
-            'xform': {
-                'value': [
-                    0, 0, FLAT_SUPPORT_LWH/2,
-                          0, 0, 0
-                ],
-            }
-        }
-    if random.random() < 1:
-        movingObject2 = {
-            'name': "ball2",
-            'type': "Ball",
-            'args': {
-                'radius': BALL_RADIUS,
-                'force': (0,0,0),
-                'b_mass': BALL_MASS,
-                'b_restitution': BALL_RESTITUTION
-            },
-            'parent': "track",
-            # Randomness: position of object
-            'xform': {
-                'value': [
-                    .7,
-                    0,
-                    BALL_RADIUS+.002,
-                    0, 0, 90
-                ],
-            }
-        }
-    else:
-        movingObject2 = {
-                'name': "plank2",
-                'type': "Box",
-                'args': {
-                    'extents': FLAT_SUPPORT_LWH,
-                    'force': (0,0,0),
-                    'b_mass': HIGH_PLANK_MASS,
-                    'b_restitution': HIGH_PLANK_RESTITUTION
-                },
-                'parent': "track",
-                # Randomness: position of object
-                'xform': {
-                    'value': [
-                        .7,
-                    0,
-                    FLAT_SUPPORT_LWH[0]/2,
-                    0, 0, 90
-                    ],
-                }
-            }
 
+movingObject2 = {
+            'name': "ball2",
+            'type': "Ball",
+            'args': {
+                'radius': BALL_RADIUS,
+                'force': (-0.008,0,0),
+                'b_mass': BALL_MASS,
+                'b_restitution': BALL_RESTITUTION
+            },
+            'parent': "track",
+            # Randomness: position of object
+            'xform': {
+                'value': [.44,0,BALL_RADIUS+0.002,0, 0, 90],
+            }
+        }
 
 
 
@@ -179,7 +86,7 @@ DATA = {
                 'extents': TOP_TRACK_LWHT,
             },
             'xform': {
-                'value': [-.9, TOP_TRACK_LWHT[1]/2+.01, .37, 0, 0, 0]
+                'value': [-.75, TOP_TRACK_LWHT[1]/2+.01, .37, 0, 0.5, 3] # last value is the track angle 
             }
         },
         {
@@ -190,7 +97,7 @@ DATA = {
             },
             'xform': {
     
-                'value': [.1, TOP_TRACK_LWHT[1]/2+.01, .45, 0, 0, 0]
+                'value': [-0.2, TOP_TRACK_LWHT[1]/2+.01, .2, 0, 0, 0]
             }
         },
         {
@@ -229,7 +136,7 @@ DATA = {
             'name': "plank5",
             'type': "Box",
             'args': {
-                'extents': (.06, .06, .06),
+                'extents': (.06, .03, .03),
                 # Randomness: force on plank, standard: .005
                 'force': (0,0,0),
                 'b_mass': 0,
@@ -237,12 +144,7 @@ DATA = {
             },
              # Randomness: plank location
              'xform': {
-             'value': [
-                .41,
-                .6,
-                .03,
-                0, 0, 0
-                ],
+             'value': [.44, .63, .03, 0, 0, 0],
             }
         },
         {
@@ -254,12 +156,10 @@ DATA = {
             'b_mass': 0,
             'b_restitution': BALL_RESTITUTION
         },
+        'parent': 'track2',
         # Randomness: ball location
         'xform': {
-            'value': [.23,
-                .4,
-                BALL_RADIUS+.002,
-                0, 0, 90]
+            'value': [0.05,0,BALL_RADIUS+.002,0, 0, 90]
         }
     },   
         {
