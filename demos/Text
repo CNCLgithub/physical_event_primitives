@@ -1,1 +1,0 @@
-bpy.ops.import_scene.egg(fallingBall.egg)
