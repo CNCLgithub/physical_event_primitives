@@ -99,11 +99,18 @@ def main():
 
     if bpy.data.objects.get("plank5_geom") is not None:
         plank5 = bpy.data.objects['plank5_geom']
-        new_color18 = bpy.data.materials.new(name="plank5_color6")
+        new_color18 = bpy.data.materials.new(name="plank5_color5")
         new_color18.use_nodes = False
         new_color18.diffuse_color = (0, .5, 0, 1)
         plank5.active_material = new_color18
-
+    
+    if bpy.data.objects.get("plank6_geom") is not None:
+        plank6 = bpy.data.objects['plank6_geom']
+        new_color18 = bpy.data.materials.new(name="plank6_color6")
+        new_color18.use_nodes = False
+        new_color18.diffuse_color = (0, .5, 0, 1)
+        plank5.active_material = new_color18
+    
     if bpy.data.objects.get("goblet_geom") is not None:
         goblet = bpy.data.objects['goblet_geom']
         new_color5 = bpy.data.materials.new(name="goblet_color")
