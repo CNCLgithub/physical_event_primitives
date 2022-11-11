@@ -1,10 +1,10 @@
 import bpy
-
+import os
 
 bpy.ops.object.delete(use_global=False)
 
 
-directory = "/Users/Winnie/Desktop/physical_event_primitives/demos/"
+directory = os.getcwd()
 
 file = input()
 
